@@ -13,15 +13,6 @@ import com.coolweather.app.model.County;
 import com.coolweather.app.model.Province;
 
 public class CoolWeatherDB {
-//DB_NAME,VERSION, coolWeatherDB,SQLiteDataBase db
-//CoolWeatherDB(),将构造方法私有化
-	//getInstance();
-	//saveProvince();
-	//loadProvinces();
-	//saveCity();
-	//loadCities()
-	//saveCounty()
-	//loaddCounties()
 	/**
 	 * 这是数据库的名字
 	 */
@@ -87,6 +78,7 @@ public class CoolWeatherDB {
 		ContentValues values=new ContentValues();
 		values.put("city_name", city.getCityName());
 		values.put("city_code", city.getCityCode());
+		values.put("province_id", city.getProvinceId());
 		db.insert("city", null, values);
 	}
 	
@@ -111,8 +103,9 @@ public class CoolWeatherDB {
 	
 	public void saveCounty(County county){
 		ContentValues values =new ContentValues();
-		values.put("city_name", county.getCountyName());
+		values.put("county_name", county.getCountyName());
 		values.put("county_code", county.getCountyCode());
+		values.put("city_id", county.getCityId());
 		db.insert("county", null, values);
 	}
 	
@@ -133,9 +126,5 @@ public class CoolWeatherDB {
 		}
 		return counties;
 	}
-	
-	
-	
-	
 	
 }
